@@ -44,16 +44,15 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if not request.user.is_authenticated %}
+                    <li><a href="{% url 'account_signup' %}"></span> Sign Up</a></li>
+                    <li><a href="{% url 'account_login' %}"> Login</a></li>
+                    {% else %}
                     <li>
-                        <a href="#">About</a>
+                        <a href="#">{{ request.user.username }}</a>
                     </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+                    {% endif %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
