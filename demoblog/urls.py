@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^blog/', include('blog.urls', namespace='blog'))
+    url(r'^', include('blog.urls', namespace='blog'))
 ]
 
 # serve media files

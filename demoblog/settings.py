@@ -44,10 +44,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    'rest_framework',
+    
     # To be used later on, for token based auth
     #'rest_auth.registration',
-    #'rest_framework',
     #'rest_framework.authtoken',
 
     'rest_auth',

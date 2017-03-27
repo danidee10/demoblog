@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, FormView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Post
+from .models import Post, Category
 from .forms import CommentForm
 
 class PostListView(ListView):
@@ -10,6 +10,7 @@ class PostListView(ListView):
 
     model = Post
     template_name = 'blog/post_list.html'
+    queryset = Post.published_posts.all()
 
 
 class PostDetailView(DetailView):
@@ -21,6 +22,9 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         """Add comment form to the view context."""
         context = super().get_context_data(**kwargs)
+
+        # add categories to context
+        context['categories'] = Category.objects.all()
 
         # initialize form with post data
         obj = self.object

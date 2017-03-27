@@ -21,6 +21,14 @@ class Category(models.Model):
         return self.name
 
 
+class PublishedManager(models.Manager):
+    """A custom manager that only shows published posts."""
+
+    def get_queryset(self):
+        """show only published posts."""
+        return super().get_queryset().filter(published=True).order_by('-create_date')
+
+
 class Post(Common):
     """Blog post model."""
 
@@ -37,6 +45,10 @@ class Post(Common):
     # image should be made unique by overriding save() method of the model
     image = models.ImageField(upload_to='articles')
     published = models.BooleanField(default=False)
+
+    # Managers
+    objects = models.Manager()
+    published_posts = PublishedManager()
 
     def __str__(self):
         return self.title
