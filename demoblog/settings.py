@@ -146,7 +146,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/var/www/static'
+STATIC_ROOT = '/home/danidee/demoblog/static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/var/www/media'
+MEDIA_ROOT = '/home/danidee/demoblog/media'
